@@ -1,0 +1,75 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:TestApp.ViewModels"
+        xmlns:m="using:TestApp.Models"
+        mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="800"
+        x:Class="TestApp.MainWindow"
+        x:DataType="vm:MainViewModel"
+        Title="AvaVibeTweak Dashboard"
+        Background="#020617"
+        WindowStartupLocation="CenterScreen"
+        Width="1200" Height="800">
+
+    <Grid ColumnDefinitions="250, *">
+        <!-- Sidebar -->
+        <Border Grid.Column="0" Background="#0F172A" BorderBrush="#1E293B" BorderThickness="0,0,1,0">
+            <StackPanel Margin="0, 24, 0, 0" Spacing="8">
+                <TextBlock x:Name="SidebarTitle" Text="Vibe Dashboard" Foreground="White" FontSize="20" FontWeight="Bold" Margin="24,0,24,32" />
+                
+                <Button x:Name="BtnOverview" Content="Overview" Background="#1E293B" Foreground="White" Margin="16,0" Padding="16,12" CornerRadius="8" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" />
+                <Button x:Name="BtnAnalytics" Content="Analytics" Background="Transparent" Foreground="#94A3B8" Margin="16,0" Padding="16,12" CornerRadius="8" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" />
+                <Button x:Name="BtnSettings" Content="Settings" Background="Transparent" Foreground="#94A3B8" Margin="16,0" Padding="16,12" CornerRadius="8" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" />
+            </StackPanel>
+        </Border>
+
+        <!-- Main Content -->
+        <ScrollViewer Grid.Column="1" Padding="40">
+            <StackPanel Spacing="32">
+                
+                <!-- Header -->
+                <TextBlock x:Name="HeaderBlock" Text="{Binding Greeting}" FontSize="28" FontWeight="SemiBold" Foreground="#F8FAFC" />
+
+                <!-- Stat Cards -->
+                <ItemsControl ItemsSource="{Binding Items}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Margin="0,0,-24,-24" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate x:DataType="m:DashboardItem">
+                            <Border x:Name="StatCard" Background="#163B0A" BorderBrush="#334155" BorderThickness="1" CornerRadius="16" Padding="24" Margin="0,0,24,24" BoxShadow="0 4 20 0 #40000000" Width="260">
+                                <StackPanel Spacing="8">
+                                    <TextBlock x:Name="CardTitle" Text="{Binding Title}" Foreground="#94A3B8" FontSize="14" FontWeight="Medium" />
+                                    <TextBlock x:Name="CardValue" Text="{Binding Value}" Foreground="White" FontSize="32" FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                                    <Border Background="#0F172A" CornerRadius="6" Padding="8,4" HorizontalAlignment="Left" Margin="0,8,0,0">
+                                        <TextBlock Text="{Binding Trend}" Foreground="{Binding TrendColor}" FontSize="12" FontWeight="SemiBold" />
+                                    </Border>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+                <!-- Transactions -->
+                <Border x:Name="TransactionsBorder" Background="#1E293B" BorderBrush="#334155" BorderThickness="1" CornerRadius="16" Padding="32">
+                    <StackPanel Spacing="24">
+                        <TextBlock x:Name="TransactionsTitle" Text="Recent Transactions" FontSize="20" FontWeight="SemiBold" Foreground="White" />
+                        <ListBox ItemsSource="{Binding Transactions}" Background="Transparent" BorderThickness="0">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate x:DataType="x:String">
+                                    <Border BorderBrush="#334155" BorderThickness="0,0,0,1" Padding="0,16">
+                                        <TextBlock Text="{Binding}" Foreground="#E2E8F0" FontSize="15" />
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+                </Border>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

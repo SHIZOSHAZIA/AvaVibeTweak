@@ -1,0 +1,210 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:AvaVibeTweak.UI.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="400"
+        x:Class="AvaVibeTweak.UI.Views.PropertyEditorView"
+        x:DataType="vm:PropertyEditorViewModel"
+        Width="300" SizeToContent="Height"
+        SystemDecorations="None"
+        Background="Transparent"
+        TransparencyLevelHint="Transparent"
+        Topmost="True"
+        ShowInTaskbar="False">
+
+    <Window.Styles>
+        <StyleInclude Source="avares://Avalonia.Controls.ColorPicker/Themes/Fluent/Fluent.xaml" />
+        <!-- Стили для красивых полей ввода -->
+        <Style Selector="TextBox.editor">
+            <Setter Property="Background" Value="#1E293B"/>
+            <Setter Property="Foreground" Value="#F8FAFC"/>
+            <Setter Property="BorderBrush" Value="#334155"/>
+            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="Padding" Value="8,4"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="MinHeight" Value="28"/>
+        </Style>
+        <Style Selector="TextBox.editor:focus /template/ Border#PART_BorderElement">
+            <Setter Property="BorderBrush" Value="#3B82F6"/>
+        </Style>
+        <!-- Стили для вкладок -->
+        <Style Selector="TabItem">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="#94A3B8"/>
+            <Setter Property="Margin" Value="0,0,12,0"/>
+            <Setter Property="Padding" Value="0,0,0,8"/>
+        </Style>
+        <Style Selector="TabItem:selected">
+            <Setter Property="Foreground" Value="#F8FAFC"/>
+        </Style>
+    </Window.Styles>
+
+    <Border Background="#0F172A"
+            BorderBrush="#1E293B"
+            BorderThickness="1"
+            CornerRadius="12"
+            BoxShadow="0 10 30 0 #50000000">
+        <Grid RowDefinitions="Auto,*">
+            <!-- Шапка (Drag Handle) -->
+            <Border Grid.Row="0" 
+                    Background="Transparent"
+                    Padding="16,12"
+                    Cursor="SizeAll"
+                    PointerPressed="OnTitlePointerPressed">
+                <Grid ColumnDefinitions="*,Auto">
+                    <TextBlock Text="{Binding TargetName, StringFormat='Edit: {0}'}"
+                               FontWeight="Bold"
+                               FontSize="14"
+                               Foreground="#F8FAFC"
+                               VerticalAlignment="Center"/>
+                    
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="4">
+                        <Button Content="⚙" 
+                                Width="24" Height="24" 
+                                Padding="0" 
+                                Background="Transparent" 
+                                Foreground="#94A3B8"
+                                Cursor="Hand"
+                                Click="OnSettingsClicked">
+                            <Button.Styles>
+                                <Style Selector="Button:pointerover /template/ ContentPresenter">
+                                    <Setter Property="Foreground" Value="#3B82F6"/>
+                                    <Setter Property="Background" Value="#1E293B"/>
+                                </Style>
+                            </Button.Styles>
+                        </Button>
+                        <Button Content="✕" 
+                                Width="24" Height="24" 
+                                Padding="0" 
+                                Background="Transparent" 
+                                Foreground="#94A3B8"
+                                Cursor="Hand"
+                                Click="OnCloseClicked">
+                            <Button.Styles>
+                                <Style Selector="Button:pointerover /template/ ContentPresenter">
+                                    <Setter Property="Foreground" Value="#EF4444"/>
+                                    <Setter Property="Background" Value="#1E293B"/>
+                                </Style>
+                            </Button.Styles>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <!-- Контент (Вкладки) -->
+            <TabControl Grid.Row="1" Margin="16,0,16,16" Padding="0,16,0,0">
+                
+                <TabItem Header="{DynamicResource Tab_Layout}">
+                    <ScrollViewer>
+                        <ItemsControl ItemsSource="{Binding LayoutProperties}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid ColumnDefinitions="130,*" Margin="0,0,0,12">
+                                        <TextBlock Text="{Binding Name}" 
+                                                   ToolTip.Tip="{Binding ToolTipText}"
+                                                   Foreground="#94A3B8" 
+                                                   FontSize="12" 
+                                                   VerticalAlignment="Center"/>
+                                        <ContentControl Grid.Column="1" Content="{Binding}" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </TabItem>
+
+                <TabItem Header="{DynamicResource Tab_Appearance}">
+                    <ScrollViewer>
+                        <ItemsControl ItemsSource="{Binding AppearanceProperties}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid ColumnDefinitions="130,*" Margin="0,0,0,12">
+                                        <TextBlock Text="{Binding Name}" 
+                                                   ToolTip.Tip="{Binding ToolTipText}"
+                                                   Foreground="#94A3B8" 
+                                                   FontSize="12" 
+                                                   VerticalAlignment="Center"/>
+                                        <ContentControl Grid.Column="1" Content="{Binding}" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </TabItem>
+
+                <TabItem Header="{DynamicResource Tab_Text}">
+                    <ScrollViewer>
+                        <ItemsControl ItemsSource="{Binding TextProperties}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid ColumnDefinitions="130,*" Margin="0,0,0,12">
+                                        <TextBlock Text="{Binding Name}" 
+                                                   ToolTip.Tip="{Binding ToolTipText}"
+                                                   Foreground="#94A3B8" 
+                                                   FontSize="12" 
+                                                   VerticalAlignment="Center"/>
+                                        <ContentControl Grid.Column="1" Content="{Binding}" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </TabItem>
+
+            </TabControl>
+        </Grid>
+    </Border>
+
+    <Window.DataTemplates>
+        <!-- Шаблон для строковых/общих значений -->
+        <DataTemplate DataType="vm:StringPropertyViewModel">
+            <TextBox Classes="editor" Text="{Binding ValueText, Mode=TwoWay}">
+                <TextBox.InnerRightContent>
+                    <StackPanel Orientation="Horizontal" Margin="4,0" Spacing="2">
+                        <Button Content="Auto" Command="{Binding SetToAutoCommand}" IsVisible="{Binding IsSizeProperty}"
+                                Background="Transparent" Foreground="#94A3B8" FontSize="10" Padding="4,2" Cursor="Hand" />
+                        <Button Content="∞" Command="{Binding SetToInfinityCommand}" IsVisible="{Binding IsMaxSizeProperty}"
+                                Background="Transparent" Foreground="#94A3B8" FontSize="14" Padding="4,0" Cursor="Hand" />
+                    </StackPanel>
+                </TextBox.InnerRightContent>
+            </TextBox>
+        </DataTemplate>
+        
+        <!-- Шаблон для Thickness (Margin/Padding) -->
+        <DataTemplate DataType="vm:ThicknessPropertyViewModel">
+            <Grid ColumnDefinitions="*,4,*,4,*,4,*">
+                <TextBox Grid.Column="0" Classes="editor" Text="{Binding Left}" ToolTip.Tip="Left" HorizontalContentAlignment="Center" MinWidth="0" Padding="0,4">
+                    <TextBox.InnerLeftContent>
+                        <TextBlock Text="L" Foreground="#64748B" FontSize="10" VerticalAlignment="Center" Margin="4,0,0,0"/>
+                    </TextBox.InnerLeftContent>
+                </TextBox>
+                <TextBox Grid.Column="2" Classes="editor" Text="{Binding Top}" ToolTip.Tip="Top" HorizontalContentAlignment="Center" MinWidth="0" Padding="0,4">
+                    <TextBox.InnerLeftContent>
+                        <TextBlock Text="T" Foreground="#64748B" FontSize="10" VerticalAlignment="Center" Margin="4,0,0,0"/>
+                    </TextBox.InnerLeftContent>
+                </TextBox>
+                <TextBox Grid.Column="4" Classes="editor" Text="{Binding Right}" ToolTip.Tip="Right" HorizontalContentAlignment="Center" MinWidth="0" Padding="0,4">
+                    <TextBox.InnerLeftContent>
+                        <TextBlock Text="R" Foreground="#64748B" FontSize="10" VerticalAlignment="Center" Margin="4,0,0,0"/>
+                    </TextBox.InnerLeftContent>
+                </TextBox>
+                <TextBox Grid.Column="6" Classes="editor" Text="{Binding Bottom}" ToolTip.Tip="Bottom" HorizontalContentAlignment="Center" MinWidth="0" Padding="0,4">
+                    <TextBox.InnerLeftContent>
+                        <TextBlock Text="B" Foreground="#64748B" FontSize="10" VerticalAlignment="Center" Margin="4,0,0,0"/>
+                    </TextBox.InnerLeftContent>
+                </TextBox>
+            </Grid>
+        </DataTemplate>
+        <!-- Шаблон для ColorPicker -->
+        <DataTemplate DataType="vm:BrushPropertyViewModel">
+            <ColorPicker Color="{Binding SelectedColor, Mode=TwoWay}" HorizontalAlignment="Left" />
+        </DataTemplate>
+
+        <!-- Шаблон для выпадающих списков (Enums) -->
+        <DataTemplate DataType="vm:EnumPropertyViewModel">
+            <ComboBox ItemsSource="{Binding EnumValues}" SelectedItem="{Binding SelectedValue, Mode=TwoWay}" HorizontalAlignment="Stretch" />
+        </DataTemplate>
+    </Window.DataTemplates>
+</Window>

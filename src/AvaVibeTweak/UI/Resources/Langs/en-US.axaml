@@ -1,0 +1,41 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="using:System">
+    
+    <!-- Tab Titles -->
+    <sys:String x:Key="Tab_Layout">Layout</sys:String>
+    <sys:String x:Key="Tab_Appearance">Appearance</sys:String>
+    <sys:String x:Key="Tab_Text">Text</sys:String>
+    
+    <!-- Tooltips -->
+    <sys:String x:Key="Tooltip_Margin">External spacing around the element.</sys:String>
+    <sys:String x:Key="Tooltip_Padding">Internal spacing between the element's border and its content.</sys:String>
+    <sys:String x:Key="Tooltip_Width">Fixed width of the element.</sys:String>
+    <sys:String x:Key="Tooltip_Height">Fixed height of the element.</sys:String>
+    <sys:String x:Key="Tooltip_MinWidth">Minimum width constraint.</sys:String>
+    <sys:String x:Key="Tooltip_MinHeight">Minimum height constraint.</sys:String>
+    <sys:String x:Key="Tooltip_MaxWidth">Maximum width constraint.</sys:String>
+    <sys:String x:Key="Tooltip_MaxHeight">Maximum height constraint.</sys:String>
+    <sys:String x:Key="Tooltip_Background">Background color or brush.</sys:String>
+    <sys:String x:Key="Tooltip_Foreground">Text or foreground color.</sys:String>
+    <sys:String x:Key="Tooltip_BorderBrush">Color of the element's border.</sys:String>
+    <sys:String x:Key="Tooltip_BorderThickness">Thickness of the element's border.</sys:String>
+    <sys:String x:Key="Tooltip_CornerRadius">Degree of rounding of the element's corners.</sys:String>
+    <sys:String x:Key="Tooltip_Opacity">Transparency level (0.0 to 1.0).</sys:String>
+    <sys:String x:Key="Tooltip_Text">The text content.</sys:String>
+    <sys:String x:Key="Tooltip_FontSize">Size of the font.</sys:String>
+    <sys:String x:Key="Tooltip_FontWeight">Thickness of the font glyphs.</sys:String>
+    <sys:String x:Key="Tooltip_FontFamily">The typeface used for text.</sys:String>
+    <sys:String x:Key="Tooltip_HorizontalAlignment">Horizontal positioning within the parent.</sys:String>
+    <sys:String x:Key="Tooltip_VerticalAlignment">Vertical positioning within the parent.</sys:String>
+    <sys:String x:Key="Tooltip_TextWrapping">Whether text should wrap when it overflows.</sys:String>
+    <sys:String x:Key="Tooltip_TextAlignment">Horizontal alignment of the text content.</sys:String>
+
+    <!-- Settings Window -->
+    <sys:String x:Key="Settings_Title">AvaVibeTweak Settings</sys:String>
+    <sys:String x:Key="Settings_Language">Language</sys:String>
+    <sys:String x:Key="Settings_HighlightColor">Highlight Color</sys:String>
+    <sys:String x:Key="Settings_PatchExportPath">Patch Export Path</sys:String>
+    <sys:String x:Key="Settings_Save">Save Settings</sys:String>
+
+</ResourceDictionary>

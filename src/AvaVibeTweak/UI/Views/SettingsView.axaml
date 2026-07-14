@@ -1,0 +1,60 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="AvaVibeTweak.UI.Views.SettingsView"
+        Title="{DynamicResource Settings_Title}"
+        Width="300" SizeToContent="Height"
+        SystemDecorations="None"
+        Background="Transparent" TransparencyLevelHint="Transparent"
+        Topmost="True" ShowInTaskbar="False">
+    
+    <Window.Styles>
+        <Style Selector="TextBlock">
+            <Setter Property="Foreground" Value="#F8FAFC"/>
+            <Setter Property="FontSize" Value="13"/>
+        </Style>
+    </Window.Styles>
+
+    <Border Background="#0F172A" BorderBrush="#1E293B" BorderThickness="1" CornerRadius="12" BoxShadow="0 10 30 0 #50000000">
+        <Grid RowDefinitions="Auto,*">
+            <!-- Header -->
+            <Border Grid.Row="0" Background="Transparent" Padding="16,12" Cursor="SizeAll" PointerPressed="OnTitlePointerPressed">
+                <Grid ColumnDefinitions="*,Auto">
+                    <TextBlock Text="{DynamicResource Settings_Title}" FontWeight="Bold" FontSize="14" VerticalAlignment="Center"/>
+                    <Button Grid.Column="1" Content="✕" Width="24" Height="24" Padding="0" Background="Transparent" Foreground="#94A3B8" Cursor="Hand" Click="OnCloseClicked">
+                        <Button.Styles>
+                            <Style Selector="Button:pointerover /template/ ContentPresenter">
+                                <Setter Property="Foreground" Value="#EF4444"/>
+                                <Setter Property="Background" Value="#1E293B"/>
+                            </Style>
+                        </Button.Styles>
+                    </Button>
+                </Grid>
+            </Border>
+
+            <!-- Content -->
+            <StackPanel Grid.Row="1" Margin="16" Spacing="16">
+                <!-- Language -->
+                <StackPanel Spacing="8">
+                    <TextBlock Text="{DynamicResource Settings_Language}" Foreground="#94A3B8" FontSize="12"/>
+                    <ComboBox x:Name="LanguageCombo" HorizontalAlignment="Stretch" SelectionChanged="OnLanguageChanged">
+                        <ComboBoxItem Content="English" Tag="en-US" />
+                        <ComboBoxItem Content="Русский" Tag="ru-RU" />
+                    </ComboBox>
+                </StackPanel>
+
+                <!-- Hotkeys -->
+                <StackPanel Spacing="8">
+                    <TextBlock Text="Toggle Design Mode Key" Foreground="#94A3B8" FontSize="12"/>
+                    <TextBox x:Name="ToggleKeyBox" IsReadOnly="True" HorizontalAlignment="Stretch" KeyDown="OnToggleKeyDown"/>
+                </StackPanel>
+                
+                <StackPanel Spacing="8">
+                    <TextBlock Text="Save Patch Key" Foreground="#94A3B8" FontSize="12"/>
+                    <TextBox x:Name="SaveKeyBox" IsReadOnly="True" HorizontalAlignment="Stretch" KeyDown="OnSaveKeyDown"/>
+                </StackPanel>
+                
+                <Button Content="Reset to Defaults" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Background="#1E293B" Foreground="#F8FAFC" Click="OnResetClicked"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

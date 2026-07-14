@@ -1,0 +1,41 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="using:System">
+    
+    <!-- Tab Titles -->
+    <sys:String x:Key="Tab_Layout">Макет</sys:String>
+    <sys:String x:Key="Tab_Appearance">Оформление</sys:String>
+    <sys:String x:Key="Tab_Text">Текст</sys:String>
+    
+    <!-- Tooltips -->
+    <sys:String x:Key="Tooltip_Margin">Внешние отступы вокруг элемента.</sys:String>
+    <sys:String x:Key="Tooltip_Padding">Внутренние отступы между рамкой элемента и его содержимым.</sys:String>
+    <sys:String x:Key="Tooltip_Width">Фиксированная ширина элемента.</sys:String>
+    <sys:String x:Key="Tooltip_Height">Фиксированная высота элемента.</sys:String>
+    <sys:String x:Key="Tooltip_MinWidth">Минимальное ограничение ширины.</sys:String>
+    <sys:String x:Key="Tooltip_MinHeight">Минимальное ограничение высоты.</sys:String>
+    <sys:String x:Key="Tooltip_MaxWidth">Максимальное ограничение ширины.</sys:String>
+    <sys:String x:Key="Tooltip_MaxHeight">Максимальное ограничение высоты.</sys:String>
+    <sys:String x:Key="Tooltip_Background">Цвет или кисть фона.</sys:String>
+    <sys:String x:Key="Tooltip_Foreground">Цвет текста или переднего плана.</sys:String>
+    <sys:String x:Key="Tooltip_BorderBrush">Цвет рамки элемента.</sys:String>
+    <sys:String x:Key="Tooltip_BorderThickness">Толщина рамки элемента.</sys:String>
+    <sys:String x:Key="Tooltip_CornerRadius">Степень скругления углов элемента.</sys:String>
+    <sys:String x:Key="Tooltip_Opacity">Уровень прозрачности (от 0.0 до 1.0).</sys:String>
+    <sys:String x:Key="Tooltip_Text">Текстовое содержимое.</sys:String>
+    <sys:String x:Key="Tooltip_FontSize">Размер шрифта.</sys:String>
+    <sys:String x:Key="Tooltip_FontWeight">Толщина (начертание) шрифта.</sys:String>
+    <sys:String x:Key="Tooltip_FontFamily">Гарнитура шрифта.</sys:String>
+    <sys:String x:Key="Tooltip_HorizontalAlignment">Горизонтальное выравнивание внутри родителя.</sys:String>
+    <sys:String x:Key="Tooltip_VerticalAlignment">Вертикальное выравнивание внутри родителя.</sys:String>
+    <sys:String x:Key="Tooltip_TextWrapping">Перенос текста на новую строку.</sys:String>
+    <sys:String x:Key="Tooltip_TextAlignment">Горизонтальное выравнивание текстового содержимого.</sys:String>
+
+    <!-- Settings Window -->
+    <sys:String x:Key="Settings_Title">Настройки AvaVibeTweak</sys:String>
+    <sys:String x:Key="Settings_Language">Язык</sys:String>
+    <sys:String x:Key="Settings_HighlightColor">Цвет выделения</sys:String>
+    <sys:String x:Key="Settings_PatchExportPath">Путь сохранения патчей</sys:String>
+    <sys:String x:Key="Settings_Save">Сохранить настройки</sys:String>
+
+</ResourceDictionary>

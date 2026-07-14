@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/AvaVibeTweak/AvaVibeTweak.csproj" />
+    <Project Path="src/TestApp/TestApp.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/AvaVibeTweak.Tests.Unit/AvaVibeTweak.Tests.Unit.csproj" />
+  </Folder>
+</Solution>

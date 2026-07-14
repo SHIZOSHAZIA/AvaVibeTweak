@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="docs/assets/logo.png" width="120" height="120" />
+<img src="docs/assets/logo.png" width="180" style="margin-bottom: 10px;" />
 
-# 🎨 AvaVibeTweak
+# AvaVibeTweak
 
 **Интерактивный визуальный редактор (Overlay) для разработчиков на Avalonia UI.**
 

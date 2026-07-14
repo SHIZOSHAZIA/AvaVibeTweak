@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/assets/logo.jpg" width="150" height="150" style="border-radius: 20%; margin-bottom: 20px;" />
+<img src="docs/assets/logo.jpg" width="120" height="120" style="border-radius: 50%; border: 3px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.5); margin-bottom: 20px;" />
 
 # AvaVibeTweak
 

@@ -26,14 +26,14 @@
 
 ```mermaid
 graph TD;
-    Developer[👨‍💻 Разработчик] -->|Запускает приложение с F11| Overlay[🎨 AvaVibeTweak Overlay]
-    Overlay -->|Кликает по элементам| VisualTree[🔍 Поиск в VisualTree]
-    VisualTree -->|Генерирует путь| UI_Editor[🎛️ Панель Свойств]
-    UI_Editor -->|Изменяет параметры| Overlay
-    Overlay -->|Нажимает Ctrl+S| JSON[📄 vibe_patch.json]
-    JSON -->|Команда: "примени патч"| AI[🤖 ИИ-Ассистент (Antigravity)]
-    AI -->|Парсинг XAML, обход Binding| SourceCode[💻 Исходный код .axaml]
-    SourceCode -->|Готовый красивый UI| Developer
+    Developer["👨‍💻 Разработчик"] -->|"Запускает приложение с F11"| Overlay["🎨 AvaVibeTweak Overlay"]
+    Overlay -->|"Кликает по элементам"| VisualTree["🔍 Поиск в VisualTree"]
+    VisualTree -->|"Генерирует путь"| UI_Editor["🎛️ Панель Свойств"]
+    UI_Editor -->|"Изменяет параметры"| Overlay
+    Overlay -->|"Нажимает Ctrl+S"| JSON["📄 vibe_patch.json"]
+    JSON -->|"Команда: примени патч"| AI["🤖 ИИ-Ассистент (Antigravity)"]
+    AI -->|"Парсинг XAML, обход Binding"| SourceCode["💻 Исходный код .axaml"]
+    SourceCode -->|"Готовый красивый UI"| Developer
 ```
 
 ---
